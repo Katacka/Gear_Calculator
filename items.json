@@ -1,0 +1,684 @@
+{
+  "boots": {
+    "reapers_boots": {
+      "mending": true,
+      "proj_protection": 1,
+      "protection": 2,
+      "ethereal": 1,
+      "armor_t": 1,
+      "armor": 1.5
+    },
+    "varcosas_cavaliers": {
+      "unbreaking": 11,
+      "evasion": 3,
+      "second_wind": 1,
+      "ethereal": 1,
+      "armor": 1,
+      "knockback_res": 0.2
+    },
+    "phantom_pirates_boots": {
+      "depth_strider": 1,
+      "protection": 1,
+      "unbreaking": 5,
+      "evasion": 2,
+      "m_evasion": 1,
+      "armor": 0.5
+    },
+    "paladins_boots": {
+      "proj_protection": 1,
+      "protection": 2,
+      "unbreaking": 2,
+      "armor_t": 1,
+      "armor": 2
+    },
+    "boots_of_the_blizzard": {
+      "protection": 3,
+      "unbreaking": 2,
+      "speed_p": -0.05,
+      "armor_t": 1,
+      "armor": 2,
+      "knockback_res": 0.1
+    },
+    "adamantium_skin": {
+      "blast_protection": 1,
+      "proj_protection": 1,
+      "unbreaking": 2,
+      "armor_t": 3,
+      "armor": 3
+    },
+    "viridian_archmage_robes": {
+      "feather_falling": 2,
+      "protection": 3,
+      "unbreaking": 8,
+      "ability_evasion": 1,
+      "bow_damage": 1,
+      "armor": 1
+    },
+    "steel_sabatons": {
+      "blast_protection": 3,
+      "protection": 2,
+      "unbreaking": 2,
+      "armor_t": 1.5,
+      "armor": 2.5
+    },
+    "dune_raiders_treads": {
+      "feather_falling": 4,
+      "fire_protection": 2,
+      "evasion": 2,
+      "unbreaking": 15,
+      "speed_p": 0.1,
+      "attack_p": 0.25,
+      "bow_damage_p": 0.25,
+      "armor": 0.5
+    },
+    "winters_march": {
+      "feather_falling": 3,
+      "unbreaking": 3,
+      "armor_t": 3,
+      "armor": 4
+    },
+    "cursestone_boots": {
+      "blast_protection": 2,
+      "fire_protection": 2,
+      "mending": true,
+      "protection": 1,
+      "thorns": 4,
+      "unbreaking": 1,
+      "curse_of_vanishing": true,
+      "armor_t": 0.5,
+      "armor": 1.5
+    },
+    "ifrits_sandals": {
+      "fire_protection": 4,
+      "protection": 3,
+      "unbreaking": 8,
+      "inferno": 1,
+      "speed_p": 0.1,
+      "armor_t": 0.5,
+      "armor": 1.5
+    },
+    "boots_of_alutana": {
+      "mending": true,
+      "proj_protection": 2,
+      "protection": 3,
+      "armor_t": 1,
+      "armor": 2
+    },
+    "harmonic_boots": {
+      "protection": 1,
+      "unbreaking": 3,
+      "speed_p": 0.05,
+      "health_p": 0.05,
+      "attack_speed_p": 0.05,
+      "attack_p": 0.05,
+      "knockback_res": 0.05,
+      "armor": 1
+    },
+    "daredevils_wake": {
+      "feather_falling": 2,
+      "mending": true,
+      "protection": 2,
+      "ethereal": 2,
+      "curse_of_vanishing": true,
+      "speed_p": 0.15,
+      "health": 6
+    }
+  },
+  "legs": {
+    "reapers_robes": {
+      "mending": true,
+      "proj_protection": 2,
+      "protection": 3,
+      "ethereal": 1,
+      "armor_t": 1.5,
+      "armor": 3.5
+    },
+    "phantom_pirates_trousers": {
+      "protection": 1,
+      "unbreaking": 5,
+      "evasion": 3,
+      "m_evasion": 2,
+      "armor": 1
+    },
+    "paladins_maille": {
+      "proj_protection": 2,
+      "protection": 3,
+      "unbreaking": 2,
+      "armor_t": 1,
+      "armor": 4
+    },
+    "leggings_of_the_blizzard": {
+      "protection": 4,
+      "unbreaking": 2,
+      "speed_p": -0.05,
+      "armor_t": 1,
+      "armor": 4,
+      "knockback_res": 0.2
+    },
+    "adamantium_skin": {
+      "blast_protection": 1,
+      "proj_protection": 1,
+      "unbreaking": 2,
+      "armor_t": 3,
+      "armor": 5
+    },
+    "viridian_archmage_robes": {
+      "blast_protection": 2,
+      "protection": 4,
+      "unbreaking": 8,
+      "ability_evasion": 1,
+      "bow_damage": 1,
+      "armor": 2
+    },
+    "ethereal_graves": {
+      "feather_falling": 3,
+      "unbreaking": 4,
+      "evasion": 3,
+      "ethereal": 1,
+      "speed_p": 0.12,
+      "armor_t": 1,
+      "armor": 4
+    },
+    "frost_knights_greaves": {
+      "unbreaking": 6,
+      "speed_p": -0.1,
+      "attack": 2,
+      "armor_t": 3,
+      "knockback_res": 0.2,
+      "armor": 6
+    },
+    "salazars_greed": {
+      "mending": true,
+      "protection": 3,
+      "unbreaking": 1,
+      "evasion": 3,
+      "hope": true,
+      "attack_speed_p": 0.1,
+      "speed_p": 0.1,
+      "attack_p": 0.2,
+      "bow_damage_p": 0.2
+    },
+    "bloodmoon_chains": {
+      "fire_protection": 4,
+      "protection": 4,
+      "unbreaking": 4,
+      "adrenaline": 4,
+      "curse_of_crippling": true,
+      "armor_t": 1,
+      "armor": 4
+    },
+    "aqueduct_greaves": {
+      "depth_strider": 2,
+      "fire_protection": 3,
+      "unbreaking": 12,
+      "evasion": 2,
+      "melee_evasion": 2,
+      "health_p": 0.2,
+      "armor": 2
+    },
+    "cursestone_greaves": {
+      "blast_protection": 2,
+      "fire_protection": 2,
+      "mending": true,
+      "protection": 2,
+      "thorns": 4,
+      "unbreaking": 1,
+      "curse_of_vanishing": true,
+      "armor_t": 0.5,
+      "armor": 3
+    },
+    "laborious_chains": {
+      "blast_protection": 3,
+      "protection": 3,
+      "unbreaking": 4,
+      "attack_speed": 0.1,
+      "armor_t": 1,
+      "armor": 4
+    },
+    "harmonic_leggings": {
+      "protection": 2,
+      "unbreaking": 3,
+      "speed_p": 0.05,
+      "health": 0.05,
+      "attack_speed_p": 0.05,
+      "attack_damage_p": 0.05,
+      "knockback_res": 0.05,
+      "armor": 2
+    },
+    "sunblessed_leggings": {
+      "blast_protection": 1,
+      "fire_protection": 1,
+      "proj_protection": 1,
+      "protection": 3,
+      "unbreaking": 7,
+      "health": 4,
+      "armor_t": 0.5,
+      "armor": 3
+    },
+    "ixhumes_hunt": {
+      "mending": true,
+      "adrenaline": 3,
+      "hope": true,
+      "health_p": 0.2,
+      "health": 2,
+      "attack_p": 0.2,
+      "armor": 2
+    }
+  },
+  "chest": {
+    "reapers_cloak": {
+      "mending": true,
+      "proj_protection": 2,
+      "protection": 3,
+      "ethereal": 1,
+      "armor_t": 2,
+      "armor": 4.5
+    },
+    "heart_of_the_sea": {
+      "depth_strider": 2,
+      "protection": 5,
+      "unbreaking": 8,
+      "sustenance": 1,
+      "armor": 3
+    },
+    "phantom_pirates_vest": {
+      "protection": 1,
+      "respiration": 1,
+      "unbreaking": 5,
+      "evasion": 3,
+      "m_evasion": 2,
+      "armor": 2
+    },
+    "paladins_maille": {
+      "proj_protection": 2,
+      "protection": 3,
+      "unbreaking": 2,
+      "armor_t": 1,
+      "armor": 5
+    },
+    "cape_of_the_blizzard": {
+      "protection": 4,
+      "unbreaking": 2,
+      "speed_p": -0.05,
+      "armor_t": 1,
+      "armor": 5,
+      "knockback_res": 0.2
+    },
+    "adamantium_skin": {
+      "blast_protection": 1,
+      "proj_protection": 1,
+      "unbreaking": 2,
+      "armor_t": 3,
+      "armor": 6
+    },
+    "viridian_archmage_robes": {
+      "proj_protection": 2,
+      "protection": 4,
+      "unbreaking": 8,
+      "ability_evasion": 1,
+      "bow_damage": 1,
+      "armor": 3
+    },
+    "archangels_mail": {
+      "blast_protection": 1,
+      "unbreaking": 5,
+      "evasion": 2,
+      "regeneration": 1,
+      "health": 4,
+      "armor_t": 1,
+      "armor": 5
+    },
+    "blessed_vestement": {
+      "unbreaking": 10,
+      "health": 10,
+      "armor": 2
+    },
+    "wolf_fur_coat": {
+      "protection": 1,
+      "unbreaking": 5,
+      "evasion": 1,
+      "attack_speed": -0.1,
+      "armor_t": 5,
+      "armor": 5
+    },
+    "phasing_chestplate": {
+      "unbreaking": 1,
+      "evasion": 5,
+      "ability_evasion": 1,
+      "speed": 0.02,
+      "speed_p": -0.1,
+      "armor": 3
+    },
+    "silver_knights_legacy": {
+      "mending": true,
+      "protection": 3,
+      "second_wind": 1,
+      "hope": 1,
+      "armor_t": 1,
+      "armor": 6
+    },
+    "bounty_hunters_gambeson": {
+      "protection": 2,
+      "evasion": 2,
+      "unbreaking": 15,
+      "knockback_res": 0.4,
+      "armor": 6
+    },
+    "phoneix_shroud": {
+      "feather_falling": 3,
+      "fire_protection": 3,
+      "mending": true,
+      "protection": 3,
+      "regeneration": 3,
+      "health": 6,
+      "armor": 2
+    },
+    "cursetone_chestplate": {
+      "blast_protection": 2,
+      "fire_protection": 2,
+      "mending": true,
+      "protection": 2,
+      "thorns": 4,
+      "unbreaking": 1,
+      "curse_of_vanishing": true,
+      "armor_t": 0.5,
+      "armor": 4
+    },
+    "flameborn_runeplate": {
+      "fire_protection": 2,
+      "protection": 3,
+      "unbreaking": 4,
+      "evasion": 1,
+      "attack_speed_p": 0.08,
+      "attack_p": 0.15,
+      "armor_t": 0.5,
+      "armor": 4
+    },
+    "wings_of_alutana": {
+      "feather_falling": 2,
+      "mending": true,
+      "protection": 4,
+      "ability_evasion": 2,
+      "speed_p": -0.1,
+      "armor_t": 1,
+      "armor": 5
+    },
+    "harmonic_tunic": {
+      "protection": 2,
+      "unbreaking": 3,
+      "speed_p": 0.05,
+      "health_p": 0.05,
+      "attack_speed_p": 0.05,
+      "attack_damage_p": 0.05,
+      "knockback_res": 0.05,
+      "armor": 3
+    }
+  },
+  "head": {
+    "reapers_hood": {
+      "mending": true,
+      "proj_protection": 1,
+      "protection": 2,
+      "ethereal": 1,
+      "armor_t": 1.5,
+      "armor": 2.5
+    },
+    "rusty_diving_helmet": {
+      "aqua_a": true,
+      "protection": 1,
+      "resp": 5,
+      "speed_p": -0.08,
+      "armor_t": 4,
+      "armor": 4
+    },
+    "phantom_pirates_cap": {
+      "aqua_a": true,
+      "protection": 1,
+      "unbreaking": 5,
+      "evasion": 2,
+      "m_evasion": 1,
+      "armor": 0.5
+    },
+    "ghost_captains_visage": {
+      "ethereal": 3,
+      "evasion": 3,
+      "a_evasion": 1,
+      "m_evasion": 1,
+      "speed_p": 0.1
+    },
+    "paladins_helm": {
+      "proj_protection": 1,
+      "protection": 2,
+      "unbreaking": 2,
+      "armor_t": 1,
+      "armor": 2
+    },
+    "veil_of_the_blizzard": {
+      "protection": 3,
+      "unbreaking": 2,
+      "speed_p": -0.05,
+      "armor_t": 1,
+      "armor": 2,
+      "knockback_res": 0.1
+    },
+    "adamantium_skin": {
+      "blast_protection": 1,
+      "proj_protection": 1,
+      "unbreaking": 2,
+      "armor_t": 3,
+      "armor": 3
+    },
+    "viridian_archmage_hat": {
+      "fire_protection": 2,
+      "protection": 3,
+      "unbreaking": 8,
+      "ability_evasion": 1,
+      "bow_damage": 1,
+      "armor": 1
+    },
+    "crown_of_flames": {
+      "fire_protection": 2,
+      "protection": 2,
+      "unbreaking": 3,
+      "inferno": 1,
+      "bow_damage_p": 0.15,
+      "armor_t": 1,
+      "armor": 2
+    },
+    "frost_giants_crown": {
+      "proj_protection": 1,
+      "hope": true,
+      "speed_p": -0.05,
+      "armor_t": 3,
+      "knockback_res": 0.2,
+      "armor": 6,
+      "unbreakable": true
+    },
+    "tithe_of_the_tides": {
+      "aqua_affinity": true,
+      "mending": true,
+      "protection": 3,
+      "respiration": 3,
+      "unbreaking": 1,
+      "regeneration": 1,
+      "health": 2,
+      "armor_t": 0.5,
+      "armor": 1.5
+    },
+    "horsemans_head": {
+      "protection": 5,
+      "curse_of_vanishing": true,
+      "darksight": true,
+      "ethereal": 2,
+      "speed_p": 0.15
+    },
+    "cursestone_helmet": {
+      "blast_protection": 2,
+      "fire_protection": 2,
+      "mending": true,
+      "protection": 1,
+      "thorns": 4,
+      "unbreaking": 1,
+      "curse_of_vanishing": true,
+      "armor_t": 0.5,
+      "armor": 1.5
+    },
+    "harmonic_cap": {
+      "protection": 1,
+      "unbreaking": 3,
+      "speed": 0.05,
+      "health": 0.05,
+      "attack_speed_p": 0.05,
+      "attack_damage_p": 0.05,
+      "knockback_res": 0.05,
+      "armor": 1
+    },
+    "invigorating_paddy_hat": {
+      "unbreaking": 10,
+      "evasion": 2,
+      "health": 6,
+      "armor": 1
+    },
+    "the_knights_pledge": {
+      "protection": 3,
+      "evasion": 1,
+      "health": 4,
+      "armor_t": 1,
+      "armor": 2
+    },
+    "shulkerskin_helmet": {
+      "blast_protection": 1,
+      "feather_falling": 2,
+      "protection": 2,
+      "unbreaking": 2,
+      "knockback_res": 0.3,
+      "armor": 3
+    }
+  },
+  "offhand": {
+    "steel_maelstrom": {
+      "evasion": 2,
+      "m_evasion": 1,
+      "attack_speed_p": 0.2,
+      "attack_p": 0.2,
+      "unbreakable": true
+    },
+    "the_eternal_mist": {
+      "ethereal": 2,
+      "evasion": 3,
+      "armor": 1
+    },
+    "abyssal_buckler": {
+      "unbreaking": 2,
+      "gills": true,
+      "speed_p": 0.15,
+      "attack": 2,
+      "armor": 2
+    },
+    "soulmender": {
+      "mending": true,
+      "health": 4
+    },
+    "iceborn_stronghold": {
+      "unbreaking": 3,
+      "armor_t": 3,
+      "armor": 2
+    },
+    "icicles_bulwark": {
+      "unbreaking": 2,
+      "health": 2,
+      "armor_t": 2,
+      "armor": 2
+    },
+    "oasis_armband": {
+      "health_p": 0.25
+    },
+    "aurora_mirror": {
+      "mending": true,
+      "mainhand_regeneration": true,
+      "ability_evasion": 3,
+      "ice_aspect": 3,
+      "hope": true,
+      "knockback_res": 0.3,
+      "health_p": 0.2
+    },
+    "necromancer's sigil": {
+      "void_tether": true,
+      "health": 10
+    }
+  },
+  "weapon": {
+    "tsunami_shortbow": {
+      "punch": 1,
+      "unbreaking": 1,
+      "point_blank": 6,
+      "damage": 16
+    },
+    "hurricane_halberd": {
+      "sharpness": 12,
+      "knockback": 1,
+      "thunder_aspect": 2,
+      "unbreaking": 5,
+      "attack_speed": 0.8,
+      "attack": 21.5
+    },
+    "phantom_cutlass": {
+      "sharpness": 7,
+      "unbreaking": 2,
+      "decay": 2,
+      "evasion": 2,
+      "attack_speed": 1.6,
+      "attack": 11.5
+    },
+    "gold_cursed_polearm": {
+      "knockback": 1,
+      "sharpness": 9,
+      "smite": 1,
+      "impact": 5,
+      "attack_speed": 1.1,
+      "attack": 14
+    },
+    "ardent_convergeance": {
+      "fire_aspect": 3,
+      "sharpness": 10,
+      "thunder_aspect": 1,
+      "ice_aspect": 1,
+      "inferno": 3,
+      "adrenaline": 3,
+      "hope": true,
+      "attack_speed": 4,
+      "attack": 6.5
+    },
+    "demons_scar": {
+      "unbreaking": 3,
+      "slayer": 3,
+      "attack_speed": 0.9,
+      "attack": 15,
+      "armor": 2
+    },
+    "celsian_sarissa": {
+      "riptide": 1,
+      "thorns": 18,
+      "evasion": 2,
+      "knockback_res": 0.3,
+      "armor": 2,
+      "unbreakable": true
+    },
+    "aurora_mirror": {
+      "mending": true,
+      "mainhand_regeneration": true,
+      "ability_evasion": 3,
+      "ice_aspect": 3,
+      "hope": true,
+      "knockback_res": 0.3,
+      "armor": 3
+    },
+    "shulkerskin_wall": {
+      "unbreaking": 1,
+      "ability_evasion": 2,
+      "melee_evasion": 2,
+      "speed_p": -0.5,
+      "armor": 5
+    }
+  }
+}
