@@ -3,7 +3,7 @@
 #   Visualize optimality with graphs
 #   Return N most optimal loadouts instead of logging "new" optimums
 #   Implement MiniMax
-#   Fix skip_weapon
+#   Modify whitelist to be per-slot
 
 import json
 import argparse
@@ -13,9 +13,9 @@ import itertools
 # Item data wrapper
 ##
 class Item:
-    def __init__(self, item):
-        self.name = item["name"]
-        self.data = item["data"]
+    def __init__(self, name, data):
+        self.name = name
+        self.data = data
 
 
 ##
@@ -24,7 +24,7 @@ class Item:
 class Gear:
     def __init__(self, loadout):
         for item in loadout:
-            setattr(self, item["type"], Item(item))
+            setattr(self, item["type"], Item(item["name"], item["data"]))
 
     def __iter__(self):
         for var in vars(self).items():
@@ -39,47 +39,64 @@ class Optimizer:
         with open(args.filename) as raw_items:
             self.items = json.load(raw_items)
 
-        self.whitelist = args.whitelist #TODO convert white/black lists to one list with '+'/'-' support
+        # Runtime options
+        self.whitelist = args.whitelist
         self.blacklist = args.blacklist
-        self.item_types = args.item_types #TODO - Create/Annotate data
-        self.item_tiers = args.item_tiers #TODO - Create/Annotate data
+        self.item_types = args.item_types #TODO - Annotate data
+        self.item_tiers = args.item_tiers #TODO - Annotate data
         self.type_scaling = args.scaling
         self.expected_damage = args.expected_damage
         self.skip_weapon = args.skip_weapon
+        self.display_num = args.display_num
         self.verbose = args.verbose
+
+        # Runtime data storage
+        self.gear_data = []
 
     ##
     # Iterates across all combinations of items to determine optimum groupings #TODO - Implement MiniMax alg
     ##
     def optimize_gear(self):
+        # Generate damage reduction data for all item combinations
         gear_list = self.generate_gear_list()
-
-        prev_score = 0
         for item_loadout in itertools.product(*gear_list):
             gear = Gear(item_loadout)
             reduction_data = self.calc_damage_reduction(gear)
-            reduction_score = self.calc_reduction_score(reduction_data, gear)
+            scaled_data = self.calc_scaled_reduction(reduction_data, gear)
+            self.gear_data.append([scaled_data, gear])
 
-            if reduction_score >= prev_score:
-                prev_score = reduction_score
-                self.print_results(reduction_data, gear)
+        # Print the top {self.display_num} combinations in increasing order of optimality
+        self.gear_data.sort(key=lambda x: x[0]["scaled_effective_health"])
+        starting_idx = max(len(self.gear_data) - self.display_num, 0)
+        for i in range(starting_idx, len(self.gear_data)):
+            self.print_results(*self.gear_data[i])
 
     ##
     # Generates a list including items for all valid types/tiers
+    #
+    # Return:
+    #   gear_list - A 2D list of all items being considered, grouped by type
     ##
     def generate_gear_list(self):
         gear_list = []
         for type in self.item_types:
+            # Skip weapons
             if type == "weapon" and self.skip_weapon:
                 continue
 
+            # Generates a list of item data - if legal
             type_list = []
+            legal_list = []
             for item_name in self.items[type]:
+                item = self.items[type][item_name]
                 if self.legal_item(item_name):
-                    item = self.items[type][item_name]
+                    legal_list.append({"type": type, "name": item_name, "data": item})
+                elif item_name not in self.blacklist:
                     type_list.append({"type": type, "name": item_name, "data": item})
 
-            if type_list:
+            if legal_list:
+                gear_list.append(legal_list)
+            else:
                 gear_list.append(type_list)
         return gear_list
 
@@ -95,7 +112,7 @@ class Optimizer:
     ##
     def legal_item(self, item):
         try:
-            legal_name = not item in self.blacklist and (not self.whitelist or item in self.whitelist)
+            legal_name = item not in self.blacklist and (not self.whitelist or item in self.whitelist)
             legal_type = True or item["type"] in self.item_types #TODO - Add proper item data
             legal_tier = True or item["tier"] in self.item_tiers #TODO - Add proper item data
         except KeyError:
@@ -184,34 +201,47 @@ class Optimizer:
         return self.calc_evasion_reduction(evasion + spec * 2)
 
     ##
-    # Returns #TODO - Finish
+    # Calculates the scaled damage reduction for a given set of gear
     #
+    # Parameters:
+    #   reduction_data - Dict of non-scaled damage reduction info
+    #   gear - Set of items being considered
+    #
+    # Return:
+    #   scaled_effective_health - A measurement of the scaled damage reduction's effective health
     ##
-    def calc_reduction_score(self, reduction_data, gear):
-        reduction_data["scaled_protection"] = self.scale_reduction_type(reduction_data, ["projectile", "fire", "blast", "feather_falling"], "protection")
-        reduction_data["scaled_armor"] = self.scale_reduction_type(reduction_data, [], "armor")
-        reduction_data["scaled_evasion"] = self.scale_reduction_type(reduction_data, ["ability", "melee"], "evasion")
+    def calc_scaled_reduction(self, reduction_data, gear):
+        reduction_data["scaled_protection"] = self.scale_reduction_type(reduction_data, ["protection", "projectile", "fire", "blast", "feather_falling"])
+        reduction_data["scaled_armor"] = self.scale_reduction_type(reduction_data, ["armor"])
+        reduction_data["scaled_evasion"] = self.scale_reduction_type(reduction_data, ["evasion", "ability", "melee"])
 
-        reduction_data["score"] = self.calc_general_reduction(reduction_data["scaled_protection"],
+        reduction_data["scaled"] = self.calc_general_reduction(reduction_data["scaled_protection"],
                                                               reduction_data["scaled_armor"], reduction_data["scaled_evasion"])
-        reduction_data["scaled_effective_health"] = self.calc_effective_health(reduction_data["score"], gear)
-        return reduction_data["scaled_effective_health"]
+        reduction_data["scaled_effective_health"] = self.calc_effective_health(reduction_data["scaled"], gear)
+        return reduction_data
 
-    def scale_reduction_type(self, reduction_data, damage_types, category):
-        scaled_reduction = 0.0
-        total_scale = 1.0
-        for type in damage_types:
-            if type in self.type_scaling:
-                 scale = self.type_scaling[type]
-                 scaled_reduction += (reduction_data[type] * float(scale))
-                 total_scale -= float(scale)
-        scaled_reduction += reduction_data[category] * total_scale
-        return scaled_reduction
+    ##
+    # Expresses damage reduction scaling as a 1-sum, per category (protection, armor, evasion)
+    #
+    # #TODO - Finish
+    ##
+    def scale_reduction_type(self, reduction_data, damage_types):
+        # Get scale for reduction type
+        total_scale = max(sum(float(x[1]) for x in self.type_scaling.items()
+                           if x[0] in damage_types), 1)
+
+        # Calculate scaled reduction type
+        scaled_reduction = 0
+        for type in self.type_scaling:
+            if type in damage_types:
+                 scale = float(self.type_scaling[type])
+                 scaled_reduction += reduction_data[type] * scale
+        return scaled_reduction / total_scale
 
     def print_results(self, reduction_data, gear):
         # Expected stats - based off averaged scalings
         print("Scaled Effective Health: " + str(reduction_data["scaled_effective_health"]))
-        print("Scaled Reduction: " + str(reduction_data["score"]) + "\n")
+        print("Scaled Reduction: " + str(reduction_data["scaled"]) + "\n")
 
         # Guarenteed stats - based off generic reductions
         print("Effective Health: " + str(reduction_data["true_effective_health"]))
@@ -229,14 +259,15 @@ class Optimizer:
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Analyze Monumenta r2 loadout optimalities")
     parser.add_argument("--filename", type=str, default="items.json", help="Defines the contextual item data for the optimality search")
-    parser.add_argument("--whitelist", type=list, default=None, help="Only include these items in the optimality search") #TODO - Implement
-    parser.add_argument("--blacklist", type=list, default=[], help="A list of items to exclude from the optimality search")
-    parser.add_argument("--item_types", type=list, default=["boots", "legs", "chest", "head", "offhand", "weapon"], help="Only include these item types in the optimality search")
-    parser.add_argument("--item_tiers", type=list, default=[1, 2, 3, 4, 5, "uncommon", "unique", "rare", "artifact", "relic", "epic"], help="Only include these item tiers in the optimality search")
-    parser.add_argument("--scaling",  action = type('', (argparse.Action, ), dict(__call__ = lambda a, p, n, v, o: getattr(n, a.dest).update(dict([v.split('=')])))), default = {}, help="A dictionary of damage reduction types (i.e. projectile_protection) to decimal scalings." +
+    parser.add_argument("--whitelist", nargs='+', default=None, help="Only include these items in the optimality search") #TODO - Implement
+    parser.add_argument("--blacklist", nargs='+', default=[], help="A list of items to exclude from the optimality search")
+    parser.add_argument("--item_types", nargs='+', default=["boots", "legs", "chest", "head", "offhand", "weapon"], help="Only include these item types in the optimality search")
+    parser.add_argument("--item_tiers", nargs='+', default=[1, 2, 3, 4, 5, "uncommon", "unique", "rare", "artifact", "relic", "epic"], help="Only include these item tiers in the optimality search")
+    parser.add_argument("--scaling",  action = type('', (argparse.Action, ), dict(__call__ = lambda a, p, n, v, o: getattr(n, a.dest).update(dict([v.split('=')])))), default = {"protection": 1, "armor": 1, "evasion": 1}, help="A dictionary of damage reduction types (i.e. projectile_protection) to decimal scalings." +
                         "For instance, if projectile=0.5 is input, the protection category will give equal consideration (50-50) to projectile_protection and protection")
     parser.add_argument("--expected_damage", type=float, default=20, help="Expected 'maximum' damage from mobs. Used for effective armor calculations")
     parser.add_argument("--skip_weapon", type=bool, default=True, help="Determines whether mainhand weapon combinations should be considered")
+    parser.add_argument("--display_num", type=int, default=5, help="Determines the number of item combinations to display, in order of decreasing optimality")
     parser.add_argument("--verbose", type=bool, default=True, help="Determines whether item attribute information should be printed (i.e. armor values)")
     return parser.parse_args()
 
